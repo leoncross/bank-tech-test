@@ -1,17 +1,17 @@
-# Bank tech test
-
-Approach:
+# My Approach
 
 As listed within the requirements, there are three key aspects of this tech-test.
 
 1. Deposits
 2. Withdraws
-3. Balance
-4. Statement printing
+3. Statement printing
 
-From here, I set up my workspace which included setting up jasmine testing suite, creating the files I needed. I then wrote my first failing test that manages deposits.
+From here, I set up my workspace which included setting up jasmine testing suite, creating the files I needed. I then wrote my first failing test that manages deposits. I continued to follow the TDD approach - write a failing test, write a passing test, refactor until I achieved the required acceptance criteria. This can be viewed in my Github Commits on this repo.
 
-I slowly went through the TDD process - red, green refactor (as can be seen by my github commits)
+A key decision that I made within this project was to not include the Time object to get current date for each transaction. This was decided for 3 reasons:
+1 - This is not clarified as a requirement as stipulated below
+2 - This is more of a UI object, and if this project was rolled out further, Time would come from the UI end and would easily be passed through as an argument in place of strings.
+3 - functionality is not hampered if decided at a future date to use Time object to give the date.
 
 # to produce result:
 
