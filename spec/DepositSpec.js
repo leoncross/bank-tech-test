@@ -6,12 +6,9 @@ describe("Deposit", function() {
   });
 
   describe("#amount", function() {
-    it("returns value given", function() {
-      expect(deposit.amount(1)).toBe(1);
-    });
-    it("pushes the amount to deposits", function() {
-      deposit.amount(1);
-      expect(deposit.deposits).toEqual([{ debit: 1 }]);
+    it("pushes amount and date as object to an array", function() {
+      deposit.amount("14/01/2012", 1);
+      expect(deposit.deposits).toEqual([{ date: "14/01/2012", debit: 1 }]);
     });
   });
 });
