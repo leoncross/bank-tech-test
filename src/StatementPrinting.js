@@ -1,7 +1,7 @@
 function PrintStatement() {
   this.combined = [];
   this.combinedReversed = [];
-  this.print = "date || credit || debit || balance \n";
+  this.print = "date || credit || debit || balance\n";
 }
 
 PrintStatement.prototype.combineDepositWithdraw = function(deposit, withdraw) {
@@ -15,6 +15,26 @@ PrintStatement.prototype.order = function() {
       dateB = new Date(b.date);
     return dateA - dateB;
   });
+};
+
+PrintStatement.prototype.statement = function() {
+  for (i = 0; i < this.combined.length; i++) {
+    this.print += `${this.combined[i]["date"]}` + " || ";
+    if (this.combined[i]["credit"] == 0) {
+      this.print +=
+        " || " +
+        `${this.combined[i]["debit"].toFixed(2)}` +
+        " || " +
+        `${this.combined[i]["balance"].toFixed(2)}` +
+        "\n";
+    } else {
+      this.print +=
+        `${this.combined[i]["credit"].toFixed(2)}` +
+        " ||  || " +
+        `${this.combined[i]["balance"].toFixed(2)}` +
+        "\n";
+    }
+  }
 };
 
 PrintStatement.prototype.reverseCombined = function(value) {
