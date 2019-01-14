@@ -1,6 +1,4 @@
 describe("Deposit", function() {
-  var deposit;
-
   beforeEach(function() {
     deposit = new Deposit();
   });

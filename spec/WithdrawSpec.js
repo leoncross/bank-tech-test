@@ -1,6 +1,4 @@
 describe("Withdraw", function() {
-  var withdraw;
-
   beforeEach(function() {
     withdraw = new Withdraw();
   });

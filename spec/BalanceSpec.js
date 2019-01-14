@@ -1,6 +1,4 @@
 describe("Balance", function() {
-  var balance;
-
   beforeEach(function() {
     balance = new Balance();
   });
