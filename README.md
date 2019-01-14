@@ -6,23 +6,45 @@ As listed within the requirements, there are three key aspects of this tech-test
 
 1. Deposits
 2. Withdraws
-3. Statement printing
+3. Balance
+4. Statement printing
 
 From here, I set up my workspace which included setting up jasmine testing suite, creating the files I needed. I then wrote my first failing test that manages deposits.
 
-# Overview of task
+I slowly went through the TDD process - red, green refactor (as can be seen by my github commits)
 
-Today, you'll practice doing a tech test.
+# to produce result:
 
-For most tech tests, you'll essentially have unlimited time. This practice session is about producing the best code you can when there is a minimal time pressure.
+To produce the following acceptance criteria result:
 
-You'll get to practice your OO design and TDD skills.
+```
+date || credit || debit || balance
+14/01/2012 || || 500.00 || 2500.00
+13/01/2012 || 2000.00 || || 3000.00
+10/01/2012 || 1000.00 || || 1000.00
+```
 
-You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
+Open up the index.html or the SpecRunner and navigate to the console.
+From here, copy the following commands into the console.
 
-## Specification
+```
+deposit = new Deposit
+withdraw = new Withdraw
+print = new PrintStatement
+balance = new Balance
 
-### Requirements
+deposit.amount("10/01/2012", 1000)
+deposit.amount("13/01/2012", 2000)
+withdraw.amount("13/01/2012", 500)
+
+print.combineDepositWithdraw(deposit.deposits, withdraw.withdrawals)
+
+balance.calculate(print.combined)
+
+print.printProcess()
+```
+
+### Set Requirements
 
 - You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
 - Deposits, withdrawal.

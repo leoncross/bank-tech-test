@@ -3,5 +3,5 @@ function Deposit() {
 }
 
 Deposit.prototype.amount = function(date, value) {
-  this.deposits.push({ date: date, debit: value, credit: 0 });
+  this.deposits.push({ date: date, debit: 0, credit: value });
 };

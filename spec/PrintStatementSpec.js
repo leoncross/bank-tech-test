@@ -29,7 +29,7 @@ describe("PrintStatement", function() {
   describe("#ordered", function() {
     it("orders items in array by date", function() {
       print.combineDepositWithdraw(deposits, withdraws);
-      print.order();
+      print._order();
       expect(print.combined).toEqual([
         { date: "01/01/2012", debit: 1, credit: 0 },
         { date: "02/01/2012", debit: 0, credit: 2 },
@@ -38,28 +38,26 @@ describe("PrintStatement", function() {
       ]);
     });
   });
-  describe("#statement", function() {
-    it("prints the statement in correct format", function() {
-      print.combineDepositWithdraw(depositsBalance, withdrawsBalance);
-      print.order();
-      print.reverseCombined();
-      print.statement();
-      expect(print.print).toEqual(
-        "date || credit || debit || balance\n05/01/2012 || 4.00 ||  || 0.00\n03/01/2012 ||  || 3.00 || -4.00\n02/01/2012 ||  || 2.00 || -1.00\n01/01/2012 || 1.00 ||  || 1.00\n"
-      );
-    });
-  });
   describe("#reverseCombined", function() {
     it("reverses the array of objects", function() {
       print.combineDepositWithdraw(deposits, withdraws);
-      print.order();
-      print.reverseCombined();
+      print._order();
+      print._reverseCombined();
       expect(print.combined).toEqual([
         { date: "05/01/2012", debit: 4, credit: 0 },
         { date: "03/01/2012", debit: 0, credit: 3 },
         { date: "02/01/2012", debit: 0, credit: 2 },
         { date: "01/01/2012", debit: 1, credit: 0 }
       ]);
+    });
+  });
+  describe("#printProcess", function() {
+    it("prints the statement in the required format", function() {
+      print.combineDepositWithdraw(depositsBalance, withdrawsBalance);
+      print.printProcess();
+      expect(print.print).toEqual(
+        "date || credit || debit || balance\n05/01/2012 || 4.00 ||  || 0.00\n03/01/2012 ||  || 3.00 || -4.00\n02/01/2012 ||  || 2.00 || -1.00\n01/01/2012 || 1.00 ||  || 1.00\n"
+      );
     });
   });
 });

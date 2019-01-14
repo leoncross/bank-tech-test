@@ -3,5 +3,5 @@ function Withdraw() {
 }
 
 Withdraw.prototype.amount = function(date, value) {
-  this.withdrawals.push({ date: date, debit: 0, credit: value });
+  this.withdrawals.push({ date: date, debit: value, credit: 0 });
 };
