@@ -1,5 +1,7 @@
 function PrintStatement() {
   this.combined = [];
+  this.combinedReversed = [];
+  this.print = "date || credit || debit || balance \n";
 }
 
 PrintStatement.prototype.combineDepositWithdraw = function(deposit, withdraw) {
@@ -13,6 +15,10 @@ PrintStatement.prototype.order = function() {
       dateB = new Date(b.date);
     return dateA - dateB;
   });
+};
+
+PrintStatement.prototype.reverseCombined = function(value) {
+  this.combinedReversed = this.combined.reverse();
 };
 
 PrintStatement.prototype._combineLoop = function(value) {
