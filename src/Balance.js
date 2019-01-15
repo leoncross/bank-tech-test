@@ -12,9 +12,7 @@ Balance.prototype.calculate = function (allTransactions, newestTransaction) {
   return newestTransaction;
 };
 
-Balance.prototype._setStartingBalance = function (
-  newestTransaction,
-) {
+Balance.prototype._setStartingBalance = function (newestTransaction) {
   if (newestTransaction.credit > 0) {
     newestTransaction.balance = newestTransaction.credit;
   } else {

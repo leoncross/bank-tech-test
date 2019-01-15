@@ -2,7 +2,7 @@
 
 describe('Feature', function() {
   beforeEach(() => {
-    validation = new DataValidation
+    validation = new DataValidation();
     balance = new Balance();
     transaction = new Transaction(balance, validation);
     print = new PrintStatement();
