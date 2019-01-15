@@ -10,6 +10,8 @@ From here, I set up my workspace which included setting up jasmine testing suite
 
 When starting to transition to working on the Statement Printing class - I realised it could potentially be doing too much if it also handled balance calculations. Therefore I created a new class to also handle this.
 
+Further, when I added error checks for Deposits and Withdraws, I noticed that there was a lot of duplication, so I refactored both classes into a single Transaction class to DRY up my code.
+
 A key decision that I envision being discussed focuses on how I handled the date of transaction. I took the decision to handle date by purely passing it through as a string, as there was no requirement within the spec to use the js Time Object. The other key reason is that by designing it strictly according to OOD, if the utilisation of the Time Object was a future requirement, no changes would have to be made to the software.
 
 # How to produce result:
@@ -27,20 +29,18 @@ Open up the index.html or the SpecRunner and navigate to the console.
 From here, copy the following commands into the console.
 
 ```
-deposit = new Deposit
-withdraw = new Withdraw
+transaction = new Transaction
 print = new PrintStatement
 balance = new Balance
 
-deposit.amount("10/01/2012", 1000)
-deposit.amount("13/01/2012", 2000)
-withdraw.amount("13/01/2012", 500)
+transaction.deposit("10/01/2012", 1000)
+transaction.deposit("13/01/2012", 2000)
+transaction.withdraw("13/01/2012", 500)
 
-print.combineDepositWithdraw(deposit.deposits, withdraw.withdrawals)
+balance.calculate(transaction.transactions)
 
-balance.calculate(print.combined)
+print.printProcess(transaction.transactions)
 
-print.printProcess()
 ```
 
 ### Set Requirements

@@ -1,47 +1,33 @@
 function PrintStatement() {
-  this.combined = [];
-  this.combinedReversed = [];
+  this.transactions = [];
   this.print = "date || credit || debit || balance\n";
 }
 
-PrintStatement.prototype.printProcess = function() {
-  this._order();
-  this._reverseCombined();
-  this._statement();
+PrintStatement.prototype.printProcess = function(transactions) {
+  this.order(transactions);
+  this.formatStatement();
   return this.print;
 };
 
-PrintStatement.prototype.combineDepositWithdraw = function(deposit, withdraw) {
-  this._combineLoop(deposit);
-  this._combineLoop(withdraw);
-};
-
-PrintStatement.prototype._order = function() {
-  this.combined.sort(function(a, b) {
+PrintStatement.prototype.order = function(transactions) {
+  this.transactions = transactions;
+  this.transactions.sort(function(a, b) {
     var dateA = new Date(a.date),
       dateB = new Date(b.date);
     return dateA - dateB;
   });
+  this.transactions = this.transactions.reverse();
 };
 
-PrintStatement.prototype._reverseCombined = function() {
-  this.combinedReversed = this.combined.reverse();
-};
-
-PrintStatement.prototype._statement = function() {
-  for (i = 0; i < this.combined.length; i++) {
-    this.print += `${this.combined[i]["date"]}` + " || ";
-    if (this.combined[i]["credit"] == 0) {
-      this.print += " || " + `${this.combined[i]["debit"].toFixed(2)}` + " || ";
+PrintStatement.prototype.formatStatement = function() {
+  for (i = 0; i < this.transactions.length; i++) {
+    this.print += `${this.transactions[i]["date"]}` + " || ";
+    if (this.transactions[i]["credit"] == 0) {
+      this.print +=
+        " || " + `${this.transactions[i]["debit"].toFixed(2)}` + " || ";
     } else {
-      this.print += `${this.combined[i]["credit"].toFixed(2)}` + " ||  || ";
+      this.print += `${this.transactions[i]["credit"].toFixed(2)}` + " ||  || ";
     }
-    this.print += `${this.combined[i]["balance"].toFixed(2)}` + "\n";
-  }
-};
-
-PrintStatement.prototype._combineLoop = function(value) {
-  for (i = 0; i < value.length; i++) {
-    this.combined.push(value[i]);
+    this.print += `${this.transactions[i]["balance"].toFixed(2)}` + "\n";
   }
 };
