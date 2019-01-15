@@ -10,13 +10,12 @@ PrintStatement.prototype.printProcess = function(transactions) {
 };
 
 PrintStatement.prototype.order = function(transactions) {
-  this.transactions = transactions;
-  this.transactions.sort(function(a, b) {
+  transactions.sort(function(a, b) {
     var dateA = new Date(a.date),
       dateB = new Date(b.date);
     return dateA - dateB;
   });
-  this.transactions = this.transactions.reverse();
+  this.transactions = transactions.reverse();
 };
 
 PrintStatement.prototype.formatStatement = function() {
