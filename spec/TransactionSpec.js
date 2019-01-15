@@ -1,24 +1,43 @@
 describe("Transaction", function() {
   beforeEach(function() {
-    transaction = new Transaction();
+    balance = new Balance();
+    transaction = new Transaction(balance);
   });
 
   describe("#deposit", function() {
     it("pushes amount and date as object to an array", function() {
-      transaction.deposit("14/01/2012", 1);
-      expect(transaction.transactions).toEqual([
-        { date: "14/01/2012", debit: 0, credit: 1 }
-      ]);
+      spyOn(balance, "calculate").and.returnValue({
+        date: "14/01/2012",
+        debit: 0,
+        credit: 1,
+        balance: 1
+      });
+      expect(transaction.deposit("14/01/2012", 1)).toEqual({
+        date: "14/01/2012",
+        debit: 0,
+        credit: 1,
+        balance: 1
+      });
     });
   });
+
   describe("#withdraw", function() {
     it("pushes amount and date as object to an array", function() {
-      transaction.withdraw("14/01/2012", 1);
-      expect(transaction.transactions).toEqual([
-        { date: "14/01/2012", debit: 1, credit: 0 }
-      ]);
+      spyOn(balance, "calculate").and.returnValue({
+        date: "14/01/2012",
+        debit: 1,
+        credit: 0,
+        balance: -1
+      });
+      expect(transaction.withdraw("14/01/2012", 1)).toEqual({
+        date: "14/01/2012",
+        debit: 1,
+        credit: 0,
+        balance: -1
+      });
     });
   });
+
   describe("#validations", function() {
     it("doesnt validate an incorrect date", function() {
       expect(function() {

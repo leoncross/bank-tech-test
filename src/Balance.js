@@ -1,26 +1,27 @@
 function Balance() {}
 
-Balance.prototype.calculate = function(statement) {
-  this.setStartingBalance(statement);
-  for (i = 0; i < statement.length; i++) {
-    if (i > 0) {
-      if (statement[i]["credit"] > 0) {
-        statement[i]["balance"] =
-          statement[i - 1]["balance"] + statement[i]["credit"];
-      } else {
-        statement[i]["balance"] =
-          statement[i - 1]["balance"] + statement[i]["debit"];
-      }
-    }
+Balance.prototype.calculate = function (
+  allTransactions,
+  newestTransaction,
+) {
+  const count = allTransactions.length;
+  if (count === 0) {
+    this._setStartingBalance(newestTransaction);
+  } else if (newestTransaction.credit > 0) {
+    newestTransaction.balance = allTransactions[count - 1].balance + newestTransaction.credit;
+  } else {
+    newestTransaction.balance = allTransactions[count - 1].balance - newestTransaction.debit;
   }
-  return statement;
+  return newestTransaction;
 };
 
-Balance.prototype.setStartingBalance = function(statement) {
-  if (statement[0]["credit"] > 0) {
-    statement[0]["balance"] = +statement[0]["credit"];
+Balance.prototype._setStartingBalance = function (
+  newestTransaction,
+) {
+  if (newestTransaction.credit > 0) {
+    newestTransaction.balance = newestTransaction.credit;
   } else {
-    statement[0]["balance"] = -statement[0]["debit"];
+    newestTransaction.balance = -newestTransaction.debit;
   }
-  return statement;
+  return newestTransaction;
 };

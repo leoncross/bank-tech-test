@@ -19,8 +19,8 @@ describe("PrintStatement", function() {
 
   describe("#ordered", function() {
     it("orders items in array by date", function() {
-      print.order(transactions);
-      expect(print.transactions).toEqual([
+      print._order(transactions);
+      expect(print.statement).toEqual([
         { date: "05/01/2012", debit: 4, credit: 0 },
         { date: "03/01/2012", debit: 0, credit: 3 },
         { date: "02/01/2012", debit: 0, credit: 2 },
