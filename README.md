@@ -1,6 +1,6 @@
 # My Approach
 
-As listed within the requirements, there are three key aspects of this tech-test.
+I started off by mapping out the classes I was going to use. This initially took the view of:
 
 1. Deposits
 2. Withdraws
@@ -8,12 +8,11 @@ As listed within the requirements, there are three key aspects of this tech-test
 
 From here, I set up my workspace which included setting up jasmine testing suite, creating the files I needed. I then wrote my first failing test that manages deposits. I continued to follow the TDD approach - write a failing test, write a passing test, refactor until I achieved the required acceptance criteria. This can be viewed in my Github Commits on this repo.
 
-A key decision that I made within this project was to not include the Time object to get current date for each transaction. This was decided for 3 reasons:
-1 - This is not clarified as a requirement as stipulated below
-2 - This is more of a UI object, and if this project was rolled out further, Time would come from the UI end and would easily be passed through as an argument in place of strings.
-3 - functionality is not hampered if decided at a future date to use Time object to give the date.
+When starting to transition to working on the Statement Printing class - I realised it could potentially be doing too much if it also handled balance calculations. Therefore I created a new class to also handle this.
 
-# to produce result:
+A key decision that I envision being discussed focuses on how I handled the date of transaction. I took the decision to handle date by purely passing it through as a string, as there was no requirement within the spec to use the js Time Object. The other key reason is that by designing it strictly according to OOD, if the utilisation of the Time Object was a future requirement, no changes would have to be made to the software.
+
+# How to produce result:
 
 To produce the following acceptance criteria result:
 
