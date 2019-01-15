@@ -12,8 +12,6 @@ PrintStatement.prototype.printProcess = function (transactions) {
 PrintStatement.prototype._order = function (transactions) {
   transactions.sort((a, b) => {
     const dateA = new Date(a.date);
-
-
     const dateB = new Date(b.date);
     return dateA - dateB;
   });

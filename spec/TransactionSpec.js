@@ -1,11 +1,15 @@
+/* eslint-disable */
+
 describe("Transaction", function() {
   beforeEach(function() {
     balance = new Balance();
-    transaction = new Transaction(balance);
+    dataValidation = new DataValidation();
+    transaction = new Transaction(balance, dataValidation);
   });
 
   describe("#deposit", function() {
     it("pushes amount and date as object to an array", function() {
+      spyOn(dataValidation, "validate")
       spyOn(balance, "calculate").and.returnValue({
         date: "14/01/2012",
         debit: 0,
@@ -23,6 +27,7 @@ describe("Transaction", function() {
 
   describe("#withdraw", function() {
     it("pushes amount and date as object to an array", function() {
+      spyOn(dataValidation, "validate")
       spyOn(balance, "calculate").and.returnValue({
         date: "14/01/2012",
         debit: 1,
@@ -40,13 +45,15 @@ describe("Transaction", function() {
 
   describe("#validations", function() {
     it("doesnt validate an incorrect date", function() {
+      spyOn(dataValidation, "validate").and.throwError('Date is not in a valid format')
       expect(function() {
-        transaction.checkDate("invaliddate", 5);
+        transaction.deposit("invalid", 1)
       }).toThrowError("Date is not in a valid format");
     });
     it("doesnt validate an incorrect value", function() {
+      spyOn(dataValidation, "validate").and.throwError('Value is not in a valid format')
       expect(function() {
-        transaction.checkValue("14/01/2012", "5");
+        transaction.deposit("14/01/2012", "1")
       }).toThrowError("Value is not in a valid format");
     });
   });

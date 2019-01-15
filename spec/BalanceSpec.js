@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 describe("Balance", function() {
   beforeEach(function() {
     balance = new Balance();

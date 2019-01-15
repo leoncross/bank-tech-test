@@ -1,11 +1,11 @@
-function Transaction(balance) {
+function Transaction(balance, dataValidation) {
   this.transactions = [];
   this.balance = balance;
+  this.dataValidation = dataValidation;
 }
 
 Transaction.prototype.withdraw = function (date, value) {
-  this.checkDate(date);
-  this.checkValue(value);
+  this.dataValidation.validate(date, value);
   const returnedBalance = this.balance.calculate(this.transactions, {
     date,
     debit: value,
@@ -17,8 +17,7 @@ Transaction.prototype.withdraw = function (date, value) {
 };
 
 Transaction.prototype.deposit = function (date, value) {
-  this.checkDate(date);
-  this.checkValue(value);
+  this.dataValidation.validate(date, value);
   const returnedBalance = this.balance.calculate(this.transactions, {
     date,
     debit: 0,
@@ -27,16 +26,4 @@ Transaction.prototype.deposit = function (date, value) {
   });
   this.transactions.push(returnedBalance);
   return this.transactions.slice(-1)[0];
-};
-
-Transaction.prototype.checkDate = function (date) {
-  if (typeof date !== 'string' || date.length !== 10) {
-    throw new Error('Date is not in a valid format');
-  }
-};
-
-Transaction.prototype.checkValue = function (value) {
-  if (typeof value !== 'number') {
-    throw new Error('Value is not in a valid format');
-  }
 };

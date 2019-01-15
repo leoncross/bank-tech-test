@@ -1,9 +1,6 @@
 function Balance() {}
 
-Balance.prototype.calculate = function (
-  allTransactions,
-  newestTransaction,
-) {
+Balance.prototype.calculate = function (allTransactions, newestTransaction) {
   const count = allTransactions.length;
   if (count === 0) {
     this._setStartingBalance(newestTransaction);

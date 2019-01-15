@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 describe("PrintStatement", function() {
   var transactions = [
     { date: "01/01/2012", debit: 1, credit: 0 },
