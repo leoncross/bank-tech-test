@@ -19,12 +19,10 @@ PrintStatement.prototype._order = function (transactions) {
 };
 
 PrintStatement.prototype._formatStatement = function () {
-  let index = 0;
-  for (index; index < this.statement.length; index++) {
+  for (let index = 0; index < this.statement.length; index++) {
     this.print += `${this.statement[index].date}` + ' || ';
     if (this.statement[index].credit === 0) {
-      this.print
-        += ' || ' + `${this.statement[index].debit.toFixed(2)}` + ' || ';
+      this.print += ' || ' + `${this.statement[index].debit.toFixed(2)}` + ' || ';
     } else {
       this.print += `${this.statement[index].credit.toFixed(2)}` + ' ||  || ';
     }

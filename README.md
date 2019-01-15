@@ -27,7 +27,7 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
-Open up the index.html or the SpecRunner and navigate to the console.
+Open up the index.html and navigate to the console.
 From here, copy the following commands into the console.
 
 ```
@@ -43,6 +43,22 @@ transaction.withdraw("13/01/2012", 500)
 print.printProcess(transaction.transactions)
 
 ```
+
+# How to run Tests / Linter:
+
+For tests, I have used Jasmine. To run the tests, navigate to the file path of the SpecRunner file, and open it in your browser. For example:
+
+```
+/Users/leoncross/code/bank-tech-test/SpecRunner.html
+```
+
+To run the linter (eslint), open your terminal, navigate to the project path, and type:
+
+```
+node_modules/.bin/eslint src
+
+```
+
 
 ### Set Requirements
 
