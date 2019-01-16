@@ -1,4 +1,4 @@
-function Transaction(balance, dataValidation) {
+function Transaction(balance = new Balance(), dataValidation = new DataValidation()) {
   this.transactions = [];
   this.balance = balance;
   this.dataValidation = dataValidation;

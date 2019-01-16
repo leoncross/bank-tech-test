@@ -5,6 +5,7 @@ module.exports = {
       "no-underscore-dangle": [0],
       "no-param-reassign": [0],
       "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-      "no-useless-concat": [0]
+      "no-useless-concat": [0],
+      "no-undef": [0]
     }
 };
