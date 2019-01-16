@@ -31,7 +31,9 @@ Open up the index.html and navigate to the console.
 From here, copy the following commands into the console.
 
 ```
-transaction = new Transaction(balance, validation);
+validation = new DataValidation();
+balance = new Balance();
+transaction = new Transaction();
 print = new PrintStatement();
 
 transaction.deposit("10/01/2012", 1000)
