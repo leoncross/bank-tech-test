@@ -31,8 +31,6 @@ Open up the index.html and navigate to the console.
 From here, copy the following commands into the console.
 
 ```
-validation = new DataValidation();
-balance = new Balance();
 transaction = new Transaction();
 print = new PrintStatement();
 
