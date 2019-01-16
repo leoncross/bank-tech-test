@@ -6,7 +6,7 @@ describe('Feature', function() {
     print = new PrintStatement();
   });
   describe("#Full feature", function() {
-    it("pushes amount and date as object to an array", function() {
+    it("completes the acceptance criteria", function() {
       transaction.deposit("10/01/2012", 1000);
       transaction.deposit("13/01/2012", 2000);
       transaction.withdraw("13/01/2012", 500);
