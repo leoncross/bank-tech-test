@@ -2,9 +2,8 @@ function Balance() {}
 
 Balance.prototype.calculate = function (allTransactions, newestTransaction) {
   const count = allTransactions.length;
-  if (count === 0) {
-    this._setStartingBalance(newestTransaction);
-  } else {
+  if (count === 0) this._setStartingBalance(newestTransaction);
+  if (count > 0) {
     this._settingBalanceByCredit(allTransactions, newestTransaction, count);
     this._settingBalanceByDebit(allTransactions, newestTransaction, count);
   }
@@ -12,11 +11,8 @@ Balance.prototype.calculate = function (allTransactions, newestTransaction) {
 };
 
 Balance.prototype._setStartingBalance = function (newestTransaction) {
-  if (newestTransaction.credit > 0) {
-    newestTransaction.balance = newestTransaction.credit;
-  } else {
-    newestTransaction.balance = -newestTransaction.debit;
-  }
+  if (newestTransaction.credit > 0) newestTransaction.balance = newestTransaction.credit;
+  if (newestTransaction.debit > 0) newestTransaction.balance = -newestTransaction.debit;
   return newestTransaction;
 };
 
